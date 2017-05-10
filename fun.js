@@ -16,7 +16,7 @@ function person(iname, iPreferedDay, imaxWeekHours, imaxDayHours, idaysWorking, 
   this.daysWorking = idaysWorking;
   this.manualHours = imanualHours;
 
-	//This goes through the array of HTML check boxes and turns it into one number, then prompty replaces itself with that number 
+  //This goes through the array of HTML check boxes and turns it into one number, then prompty replaces itself with that number 
   this.numberDaysWorking = function() {
     for (count = 0, dayNum = 0, allDays = idaysWorking.length; dayNum < allDays; dayNum++) {
       if (this.daysWorking[dayNum] == true) {
@@ -28,7 +28,7 @@ function person(iname, iPreferedDay, imaxWeekHours, imaxDayHours, idaysWorking, 
     };
     this.numberDaysWorking = count;
   };
-	//this does nothing! Just messing around with adding a "calculated start/end time" idea
+  //this does nothing! Just messing around with adding a "calculated start/end time" idea
   this.startTime = function() {
     for (count = 0, returnArray = []; count < this.numberDaysWorking; count++) {
       returnArray.push(8);
@@ -37,7 +37,7 @@ function person(iname, iPreferedDay, imaxWeekHours, imaxDayHours, idaysWorking, 
   };
 
 
-	//runs a BUNCH of *fun*ctions to organize all the data
+  //runs a BUNCH of *fun*ctions to organize all the data
   this.numberDaysWorking();
   this.calcManualHours();
   this.personOrganizeHours();
@@ -47,7 +47,7 @@ function person(iname, iPreferedDay, imaxWeekHours, imaxDayHours, idaysWorking, 
   console.timeEnd("How long it takes to make " + iname);
 }
 
-
+	//this is my shame, but I like to keep it around
 /*function cleanDays (person){
 var tWorkWeekL = person.weekSchedule.length;
 var tWorkWeek = person.weekSchedule;
@@ -80,7 +80,7 @@ function getPeople(peopleArray) {
   returnString += "</tr></table>";
   return returnString;
 };
-	
+
 //moves the prefered day around, sets the hoursArray to only numbers e.x. [8,7,7,7]
 person.prototype.personOrganizeHours = function() {
   var hoursArray = [];
@@ -91,21 +91,23 @@ person.prototype.personOrganizeHours = function() {
 
   var holdingHours = .25 //runs on quarter hours
   var counTt = 0;
-	//loops over the array and adds holdingHours to each day while taking away from PreferedDay until less then maxDayHours
-  if (hoursArray.length < 2){} else {
-  
- 
-  while (hoursArray[this.PreferedDay] > this.maxDayHours) {
-      console.log(counTt);
-    if(counTt >= hoursArray.length){counTt = 0;} else {
-    
+  //loops over the array and adds holdingHours to each day while taking away from PreferedDay until less then maxDayHours
+  if (hoursArray.length < 2) {} else {
 
-      hoursArray[counTt] += holdingHours;
-      hoursArray[this.PreferedDay] -= holdingHours;
-      counTt++;
+
+    while (hoursArray[this.PreferedDay] > this.maxDayHours) {
+      console.log(counTt);
+      if (counTt >= hoursArray.length) {
+        counTt = 0;
+      } else {
+
+
+        hoursArray[counTt] += holdingHours;
+        hoursArray[this.PreferedDay] -= holdingHours;
+        counTt++;
       }
     }
- }
+  }
 
   /**
     if (this.numberDaysWorking > 1) {
@@ -190,7 +192,7 @@ var mDaysToArrays = function() {
 document.getElementById("people").innerHTML = getPeople(arr);
 
 var myFunction = function() {
-console.log(arr);
+  console.log(arr);
   var inName = document.getElementById("name").value;
   var iprefDay = document.getElementById("prefDay").value;
   var imaxWeekHours = document.getElementById("maxWeekHours").value;
@@ -222,3 +224,40 @@ console.log(arr);
 
   document.getElementById("people").innerHTML = getPeople(arr);
 };
+
+// generates the name of the month by getting the number of the month and comparing that to a month array.
+var fileNameDate = function() {
+  var date = new Date();
+  var months = ["January", "February", "March", "May", "June", "July", "August", "September", "October", "November", "December"];
+  return (date.getDate() + months[date.getMonth()]);
+}
+
+//Similar to the getPeople function but for the CSV
+var outputCSV = function(peopleArray) {
+  var returnString = ",,,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,";
+  for (count = 0; count < peopleArray.length; count++) {
+    returnString += "\n";
+    returnString += "," + peopleArray[count].name + ",";
+    for (days = 0; days < 7; days++) {
+      if (peopleArray[count].weekSchedule[days] >= 0) {
+        returnString += "," + peopleArray[count].weekSchedule[days];
+      } else {
+        returnString += ",";
+
+      }
+    }
+  }
+  returnString += ",,";
+  return returnString;
+};
+
+//manages the button and auto-names the file after the dayMonth ex 5July
+$("#btn-save").click(function() {
+  var text = outputCSV(arr);
+  var filename = fileNameDate();
+  var blob = new Blob([text], {
+    type: "text/plain;charset=utf-8"
+  });
+  saveAs(blob, filename + ".csv");
+  console.log(blob);
+});

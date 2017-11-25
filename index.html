@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<header>
+<link rel="stylesheet" href="style.css">
+
+</header>
+
+<body>
+
+  <h1>Displaying Lists!</h1>
+  <p id="people"></p>
+  <p id="demo"></p>
+
+  <script>
+
+
+  </script>
+  <label for="name">Name :</label><input id="name" type="text" name="firstname" value="Goodpal" autofocus>
+  <p></p>
+  <label for="prefDay">Prefered Day for Over Hours :</label><input id="prefDay" type="number" name="perfday!" value="0">
+  <p></p>
+  <label for="totalHours">Work Hours for the week :</label><input id="totalHours" type="number" value="40">
+  <p></p>
+  <label for="dailyHourLimit">Maximum Hours you want to work a day also doesn't work:</label><input id="dailyHourLimit" type="number" value="8">
+
+  <p></p>
+  <table>
+    <tr>
+      <th>
+        <label for="0">Monday</label><input checked type="checkbox" id="0"> </th>
+      <th>
+        <label for="1">Tuesday</label><input checked type="checkbox" id="1"> </th>
+      <th>
+        <label for="2">Wednesday</label><input checked type="checkbox" id="2"> </th>
+      <th>
+        <label for="3">Thursday</label><input checked type="checkbox" id="3"> </th>
+      <th>
+        <label for="4">Friday</label><input checked type="checkbox" id="4"> </th>
+      <th>
+        <label for="5">Saturday</label><input type="checkbox" id="5"> </th>
+      <th>
+        <label for="6">Sunday</label><input type="checkbox" id="6"> </th>
+      <!-- <input id="daysWorking" type="text" value="true,true,true,true,true,true,true"> -->
+      <!-- <input id="manualHours" type="text" value="0,0,0,0,0,0,0"> -->
+    </tr>
+    <tr>
+      <th>
+
+      </th>
+      <th>
+
+      </th>
+      <th>
+
+      </th>
+      <th>
+
+      </th>
+      <th>
+
+      </th>
+      <th>
+
+      </th>
+      <th>
+
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <input type="number" value="0" width="1" id="10" title="Monday Manual Hours">
+      </th>
+      <th>
+        <input type="number" value="0" width="1" id="20" title="Tusday Manual Hours">
+      </th>
+      <th>
+        <input type="number" value="0" width="1" id="30" title="Wednesday Manual Hours">
+      </th>
+      <th>
+        <input type="number" value="0" width="1" id="40" title="Thursday Manual Hours">
+      </th>
+      <th>
+        <input type="number" value="0" width="1" id="50" title="Friday Manual Hours">
+      </th>
+      <th>
+        <input type="number" value="0" width="1" id="60" title="Saturday Manual Hours">
+      </th>
+      <th>
+        <input type="number" value="0" width="1" id="70" title="Sunday Manual Hours">
+      </th>
+    </tr>
+  </table>
+  <button onclick="addPerson()">Add a guy!</button>
+  <script src="main.js"></script>
+  <script src="display.js"></script>
+  <script src="person.js"></script>
+</body>

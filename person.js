@@ -29,13 +29,14 @@ Person.prototype.allDaysWorking = function() {
             daysArray.push(false);
         }
     }
-    console.log(daysArray);
     return [daysArray,numberOfDays];
 };
-//Contains the manually input hours, along with remaining time for the ExtraHours field
+//Contains the manually input hours
 Person.prototype.inputHours = function () {
     for (var count = 1, workArray =[]; count <= lengthOfSchedule; count++) {
         workArray.push(document.getElementById(count * 10).value);
+//Removes the manually entered hours from the total hours counter
+        this.totalHours -= workArray[count-1];
     }
     return workArray;
 };
@@ -52,20 +53,22 @@ Person.prototype.dailyHours = function() {
         }
         if (this.dailyHourLimit <= hoursArray[0]) break;
     }
-
-    this.manualHours.push(totalHours);
+    this.unusedHours = totalHours;
     return hoursArray;
 };
 //Combines the array of Hours with the Boolean days working array to a array of numbers in the place of Boolean values.
 Person.prototype.organizeHours = function (hoursArray,daysWorking) {
-    var workingHoursArray = hoursArray;
+    var workingHoursArray = hoursArray.slice(0);
     var organizedHours = [];
     for (var count = 0; count < daysWorking.length; count++) {
-        if (daysWorking[count]){
+        if (this.manualHours[count] > 0) {
+            organizedHours.push(this.manualHours[count])
+        } else if (daysWorking[count]) {
             organizedHours.push(workingHoursArray.pop())
         } else {
             organizedHours.push("")
         }
     }
+    organizedHours.push(this.unusedHours);
     return organizedHours;
 };

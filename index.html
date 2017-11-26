@@ -17,19 +17,19 @@
   <table>
     <tr>
       <th>
-        <label for="0">Monday</label><input checked type="checkbox" id="0"> </th>
+        <label for="1">Monday</label><input checked type="checkbox" id="1"> </th>
       <th>
-        <label for="1">Tuesday</label><input checked type="checkbox" id="1"> </th>
+        <label for="2">Tuesday</label><input checked type="checkbox" id="2"> </th>
       <th>
-        <label for="2">Wednesday</label><input checked type="checkbox" id="2"> </th>
+        <label for="3">Wednesday</label><input checked type="checkbox" id="3"> </th>
       <th>
-        <label for="3">Thursday</label><input checked type="checkbox" id="3"> </th>
+        <label for="4">Thursday</label><input checked type="checkbox" id="4"> </th>
       <th>
-        <label for="4">Friday</label><input checked type="checkbox" id="4"> </th>
+        <label for="5">Friday</label><input checked type="checkbox" id="5"> </th>
       <th>
-        <label for="5">Saturday</label><input type="checkbox" id="5"> </th>
+        <label for="6">Saturday</label><input type="checkbox" id="6"> </th>
       <th>
-        <label for="6">Sunday</label><input type="checkbox" id="6"> </th>
+        <label for="7">Sunday</label><input type="checkbox" id="7"> </th>
       <!-- <input id="daysWorking" type="text" value="true,true,true,true,true,true,true"> -->
       <!-- <input id="manualHours" type="text" value="0,0,0,0,0,0,0"> -->
     </tr>
@@ -86,7 +86,23 @@
   <p id="people"></p>
   <p id="demo"></p>
 
+  <script>
+      for (var count = 1; count <= 7; count++) {
+          document.getElementById(count.toString()).addEventListener("change", checkBox);
+          document.getElementById((count*10).toString()).addEventListener("change", numberBox);
+      }
+      function checkBox() {
+          document.getElementById(this.id + "0").value = 0;
+      }
+      function numberBox() {
+          console.log(this);
+          document.getElementById((this.id).slice(0, 1)).checked = false;
+      }
+
+  </script>
+
   <script src="main.js"></script>
   <script src="display.js"></script>
   <script src="person.js"></script>
+
 </body>

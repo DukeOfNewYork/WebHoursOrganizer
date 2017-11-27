@@ -21,7 +21,7 @@ var PersonWrapper = function () {
 
 //Orders the HTML Days check boxes into a True False list
 Person.prototype.allDaysWorking = function() {
-    for (var count = 0, numberOfDays = 0, daysArray = []; count < lengthOfSchedule; count++) {
+    for (var count = 1, numberOfDays = 0, daysArray = []; count <= lengthOfSchedule; count++) {
         if (document.getElementById(count).checked === true) {
             daysArray.push(true);
             numberOfDays++;
@@ -46,15 +46,19 @@ Person.prototype.dailyHours = function() {
     var hoursArray = [];
     for (var count = 0, pDays = this.numberOfDaysWorking; count < pDays; count++) hoursArray.push(0);
     //Evenly distributes the minimum time until it can no longer be distributed evenly, then adds the remainder to manualHours.
-    while (totalHours >= this.numberOfDaysWorking * minimumTime) {
-        for (count = 0; count < pDays; count++) {
-            hoursArray[count] += minimumTime;
-            totalHours -= minimumTime;
+    if (pDays !== 0) {
+        while (totalHours >= this.numberOfDaysWorking * minimumTime) {
+            for (count = 0; count < pDays; count++) {
+                hoursArray[count] += minimumTime;
+                totalHours -= minimumTime;
+            }
+            if (this.dailyHourLimit <= hoursArray[0]) break;
         }
-        if (this.dailyHourLimit <= hoursArray[0]) break;
+        this.unusedHours = totalHours;
+        return hoursArray;
+    } else {
+        return [];
     }
-    this.unusedHours = totalHours;
-    return hoursArray;
 };
 //Combines the array of Hours with the Boolean days working array to a array of numbers in the place of Boolean values.
 Person.prototype.organizeHours = function (hoursArray,daysWorking) {

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <header>
 <link rel="stylesheet" href="style.css">
-
 </header>
 
 <body>
@@ -87,20 +86,11 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script>
       $(document).ready(function(){
-          for (var count = 1; count <= 7; count++) {
-              document.getElementById(count.toString()).addEventListener("change", checkBox);
-              document.getElementById((count*10).toString()).addEventListener("change", numberBox);
-          }
-          function checkBox() {
-              document.getElementById(this.id + "0").value = 0;
-          }
-          function numberBox() {
-              document.getElementById((this.id).slice(0, 1)).checked = false;
-          }
+          $.getScript('main.js');
+          $.getScript('display.js', function () {
+              organizeInput();
+          });
+          $.getScript('person.js');
       });
   </script>
-  <script src="main.js"></script>
-  <script src="display.js"></script>
-  <script src="person.js"></script>
-
 </body>

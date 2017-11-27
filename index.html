@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <header>
 <link rel="stylesheet" href="style.css">
-
 </header>
 
 <body>
   <label for="name">Name :</label><input id="name" type="text" name="firstname" value="Goodpal" autofocus>
-  <p></p>
-  <label for="prefDay">Prefered Day for Over Hours :</label><input id="prefDay" type="number" name="perfday!" value="0">
   <p></p>
   <label for="totalHours">Work Hours for the week :</label><input id="totalHours" type="number" value="40">
   <p></p>
@@ -86,22 +83,14 @@
   <p id="people"></p>
   <p id="demo"></p>
 
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script>
-      for (var count = 1; count <= 7; count++) {
-          document.getElementById(count.toString()).addEventListener("change", checkBox);
-          document.getElementById((count*10).toString()).addEventListener("change", numberBox);
-      }
-      function checkBox() {
-          document.getElementById(this.id + "0").value = 0;
-      }
-      function numberBox() {
-          console.log(this);
-          document.getElementById((this.id).slice(0, 1)).checked = false;
-      }
+      $(document).ready(function(){
+          $.getScript('main.js');
+          $.getScript('display.js', function () {
+              organizeInput();
+          });
+          $.getScript('person.js');
+      });
   </script>
-
-  <script src="main.js"></script>
-  <script src="display.js"></script>
-  <script src="person.js"></script>
-
 </body>

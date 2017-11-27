@@ -11,5 +11,4 @@ var addPerson = function() {
     personDictionary[htmlInput.name] = new Person(htmlInput);
     PersonWrapper.complete(personDictionary[htmlInput.name]);
     document.getElementById("people").innerHTML = htmlDisplayPeople(personDictionary);
-    console.log(personDictionary[htmlInput.name])
 };

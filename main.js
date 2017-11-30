@@ -6,9 +6,13 @@ lengthOfSchedule = 7;
 minimumTime = 0.25;
 
 //Creates a new Person and adds them to the person dictionary with the HTML name as name and the value as the object
-var addPerson = function() {
-    var htmlInput = {name:document.getElementById("name").value, dailyHourLimit:document.getElementById("dailyHourLimit").value, totalHours:document.getElementById("totalHours").value};
+var addPerson = function () {
+    var htmlInput = {
+        name: document.getElementById("name").value,
+        dailyHourLimit: document.getElementById("dailyHourLimit").value,
+        totalHours: document.getElementById("totalHours").value
+    };
     personDictionary[htmlInput.name] = new Person(htmlInput);
     PersonWrapper.complete(personDictionary[htmlInput.name]);
-    document.getElementById("people").innerHTML = htmlDisplayPeople(personDictionary);
+    $('#people').html(htmlDisplayPeople(personDictionary));
 };

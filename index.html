@@ -29,8 +29,6 @@
             <label for="6">Saturday</label><input type="checkbox" id="6"></th>
         <th>
             <label for="7">Sunday</label><input type="checkbox" id="7"></th>
-        <!-- <input id="daysWorking" type="text" value="true,true,true,true,true,true,true"> -->
-        <!-- <input id="manualHours" type="text" value="0,0,0,0,0,0,0"> -->
     </tr>
     <tr>
         <th>
@@ -60,16 +58,17 @@
 <button onclick="addPerson()">Add a guy!</button>
 
 <p id="people"></p>
-<p id="demo"></p>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
     $(document).ready(function () {
-        $.getScript('main.js');
-        $.getScript('display.js', function () {
-            organizeInput();
+        //main.js contains variables that other scripts use and should be loaded first.
+        $.getScript('main.js').done(function() {
+            $.getScript('display.js', function () {
+                organizeInput();
+            });
+            $.getScript('person.js');
         });
-        $.getScript('person.js');
-    });
+    })
 </script>
 </body>

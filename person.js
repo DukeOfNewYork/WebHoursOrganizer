@@ -70,7 +70,7 @@ Person.prototype.organizeHours = function (hoursArray,daysWorking) {
         } else if (daysWorking[count]) {
             organizedHours.push(workingHoursArray.pop())
         } else {
-            organizedHours.push("")
+            organizedHours.push(0)
         }
     }
     organizedHours.push(this.unusedHours);

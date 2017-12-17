@@ -58,10 +58,10 @@
 <button onclick="addPerson()">Add a guy!</button>
 
 <p id="people"></p>
-
+<p id="coverage"></p>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
-    $(document).ready(function () {
+    $(function () {
         //main.js contains variables that other scripts use and should be loaded first.
         $.getScript('main.js').done(function() {
             $.getScript('display.js', function () {

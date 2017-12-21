@@ -18,14 +18,11 @@ var htmlDisplayPeople = function (peopleDictionary) {
     for (var key in peopleDictionary) if (peopleDictionary[key].hasOwnProperty('name') && peopleDictionary[key].hasOwnProperty('totalSchedule')) {
         returnString += "<tr><tr>";
         returnString += "<th>" + peopleDictionary[key].name + "</th>";
-        for (var days = 0, totalSchedule = peopleDictionary[key].totalSchedule.length; days < totalSchedule; days++) {
+        for (var days = 0, totalSchedule = peopleDictionary[key].totalSchedule; days < totalSchedule.length; days++) {
             if (peopleDictionary[key].totalSchedule[days] > 0) {
                 returnString += "<th>" + peopleDictionary[key].totalSchedule[days] + "</th>";
-                if (typeof totalCoverage[days] === 'number') {
-                    totalCoverage[days] += peopleDictionary[key].totalSchedule[days];
-                } else {
-                    totalCoverage[days] = peopleDictionary[key].totalSchedule[days];
-                }
+//If TotalCoverage has a blank value it is assigned the value from the Person, however if the array already has a value it adds them together
+                totalCoverage[days] = ((totalCoverage[days] += totalSchedule[days]) || totalSchedule[days]);
             } else {
                 if (typeof totalCoverage[days] === 'number') {
                     totalCoverage[days] += 0;

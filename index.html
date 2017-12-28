@@ -62,13 +62,15 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
     $(function () {
-        //main.js contains variables that other scripts use and should be loaded first.
-        $.getScript('main.js').done(function() {
-            $.getScript('display.js', function () {
+        $.when(
+            $.getScript('main.js'),
+            $.getScript('display.js'),
+            $.getScript('person.js')
+        ).then(function () {
+// After loading the scripts organizeInput from display.js takes over managing the input fields
                 organizeInput();
-            });
-            $.getScript('person.js');
-        });
+            }
+        )
     })
 </script>
 </body>

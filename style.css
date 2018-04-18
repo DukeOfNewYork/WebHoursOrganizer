@@ -1,27 +1,49 @@
+.grid {
+    display: grid;
+}
+
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333333;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
 }
 
 li {
-  float: left;
+    float: left;
 }
 
 li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 16px;
-  text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
 }
 
 li a:hover {
-  background-color: #111111;
+    background-color: #111111;
 }
 
 input[type="number"] {
-  width: 30px;
+    width: 30px;
+}
+
+#name {
+    max-width: 300px;
+}
+
+button {
+    max-width: 25em;
+}
+
+@media only screen and (min-width: 800px) {
+    #inputs {
+        width: 783px;
+    }
+
+    .name {
+        width: 50px;
+    }
 }

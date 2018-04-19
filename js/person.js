@@ -34,7 +34,8 @@ Person.prototype.allDaysWorking = function() {
 //Contains the manually input hours
 Person.prototype.inputHours = function () {
     for (var count = 1, workArray =[]; count <= lengthOfSchedule; count++) {
-        workArray.push(document.getElementById(count * 10).value);
+        //this counts through all of the text inputs, makes sure they're integers, then pushes them to the work array
+        workArray.push(parseInt(document.getElementById(count * 10).value));
 //Removes the manually entered hours from the total hours counter
         this.totalHours -= workArray[count-1];
     }

@@ -1,7 +1,6 @@
-.grid {
-    display: grid;
+#all-inputs{
+    display: block;
 }
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -32,10 +31,6 @@ input[type="number"] {
 
 #name {
     max-width: 300px;
-}
-
-button {
-    max-width: 25em;
 }
 
 @media only screen and (min-width: 800px) {

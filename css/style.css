@@ -60,6 +60,10 @@ table {
     border-bottom: .1em solid #0F2328;
 }
 
+tr:nth-child(even) {
+    background-color: #B9C0DA;
+}
+
 @media only screen and (max-width: 800px) {
     * {
         font-size: 111%;

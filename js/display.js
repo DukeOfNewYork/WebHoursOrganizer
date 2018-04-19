@@ -16,7 +16,7 @@ var htmlDisplayPeople = function (peopleDictionary) {
     var totalCoverage = [];
     var returnString = '<table style="width:100%">    <th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th><th>UnusedHours</th><tr>';
     for (var key in peopleDictionary) if (peopleDictionary[key].hasOwnProperty('name') && peopleDictionary[key].hasOwnProperty('totalSchedule')) {
-        returnString += "<tr><tr>";
+        returnString += "<tr>";
         returnString += "<th>" + peopleDictionary[key].name + "</th>";
         for (var days = 0, totalSchedule = peopleDictionary[key].totalSchedule; days < totalSchedule.length; days++) {
             if (peopleDictionary[key].totalSchedule[days] > 0) {
@@ -32,8 +32,9 @@ var htmlDisplayPeople = function (peopleDictionary) {
                 returnString += "<th></th>";
             }
         }
+        returnString += "</tr>";
     }
-    returnString += "<tr><tr>";
+    returnString += "<tr>";
     returnString += "<th>Total Coverage</th>";
     for (var days = 0; days < totalCoverage.length; days++) {
         returnString += "<th>" + totalCoverage[days] + "</th>";

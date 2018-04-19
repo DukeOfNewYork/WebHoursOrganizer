@@ -1,6 +1,7 @@
-#all-inputs{
+#all-inputs {
     display: block;
 }
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -26,14 +27,51 @@ li a:hover {
 }
 
 input[type="number"] {
-    width: 30px;
+    width: 3em
 }
 
 #name {
     max-width: 300px;
 }
 
-@media only screen and (min-width: 800px) {
+#add-person {
+    background-color: #b2b2b2; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+    * {
+        font-size: 111%;
+    }
+    td {
+        display: table-row;
+    }
+
+    #inputs input[type="number"] {
+        float: left;
+    }
+
+    #all-inputs-wrapper {
+        text-align: center;
+    }
+
+    #all-inputs {
+        display: inline-block;
+    }
+
+    table {
+        margin: auto;
+    }
+}
+
+@media only screen and (min-width: 801px) {
     #inputs {
         width: 783px;
     }
@@ -41,4 +79,5 @@ input[type="number"] {
     .name {
         width: 50px;
     }
+
 }
